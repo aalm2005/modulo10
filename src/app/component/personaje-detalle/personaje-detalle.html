@@ -1,0 +1,30 @@
+<div class="container mt-4" *ngIf="personaje">
+  <h1 class="display-4">{{ personaje.nombre | uppercase }}</h1>
+  <h2 class="text-muted">{{ personaje.anio }}</h2>
+
+  <div class="card mt-4">
+    <div class="card-body d-flex">
+      <!-- Imagen del personaje -->
+      <div class="me-3">
+        <img [src]="personaje.img" alt="{{personaje.nombre}}" style="width:150px;">
+      </div>
+
+      <!-- Descripción y casa -->
+      <div class="flex-grow-1">
+        <h4>{{ personaje.nombre }}</h4>
+        <p>{{ personaje.desc }}</p>
+
+        <h5>Casa:</h5>
+        <p>{{ personaje.casa }}</p>
+
+        <!-- Logo según la casa con ngSwitch -->
+        <div [ngSwitch]="personaje.casa">
+          <img *ngSwitchCase="'Nintendo'" src="img/logo-nintendo.png" alt="Nintendo">
+          <img *ngSwitchCase="'Microsoft (Bungie/343 Industries)'" src="img/logo-xbox.png" alt="Xbox">
+          <img *ngSwitchCase="'Sony (Santa Monica Studio)'" src="img/logo-playstation.png" alt="PlayStation">
+          <img *ngSwitchDefault src="img/logo-default.png" alt="Logo">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

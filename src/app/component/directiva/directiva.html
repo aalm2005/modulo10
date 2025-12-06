@@ -1,0 +1,37 @@
+
+<h1>Directivas estructurales</h1>
+<hr>
+
+
+<div class="row">
+  <div class="col-sm-6 mb-3 mb-sm-0">
+    <div class="card">
+      <h5 class="card-header">Directiva if</h5>
+      <div class="card-body d-grid gap-2">
+        <button (click)="mostrar =! mostrar" type="button" class="btn btn-outline-primary btn-block">mostrar/ocultar mensaje</button>
+        @if(mostrar){
+             <div class="card-block text-center" >
+             <p class="card-text">{{ mensaje }}</p>
+             <h5 class="card-title"> <cite title="Source title">{{autor}}</cite></h5>
+             </div>
+        }
+          
+    </div>
+  </div>
+  </div>
+
+
+  <div class="col-sm-6">
+  <div class="card">
+    <h5 class="card-header">Directiva for</h5>
+    <div class="card-body">
+      <ul class="list-group">
+        @for (personaje of personajes; track $index) {
+          <li class="list-group-item">{{$index+1}}.-{{ personaje}}</li>
+        }
+      </ul>
+
+      </div>
+    </div>
+  </div>
+</div>

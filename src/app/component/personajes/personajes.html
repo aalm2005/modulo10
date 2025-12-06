@@ -1,0 +1,21 @@
+
+<h1>Personajes <small>Nintendo vs Xbox vs playstation</small></h1>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+ @for (personaje of personajes; track $index) {
+  <div class="col">
+    <div class="card h-100" (click)="verPersonaje(personaje)" style="cursor:pointer;">
+      <img [src]="personaje.img" class="card-img-top" alt="{{personaje.nombre}}">
+      <div class="card-body">
+        <h5 class="card-title">{{ personaje.nombre }}</h5>
+        <p class="card-text">
+          {{ personaje.desc | slice:0:80 }}...
+        </p>
+      </div>
+      <div class="card-footer">
+        <small class="text-body-secondary">{{ personaje.anio }}</small>
+      </div>
+    </div>
+  </div>
+}
+</div>
