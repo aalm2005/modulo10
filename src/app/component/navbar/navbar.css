@@ -1,0 +1,103 @@
+/* src/app/component/navbar/navbar.css */
+
+/* Fondo de la barra con efecto glass y borde neón inferior */
+.navbar-gamer {
+  background-color: rgba(26, 26, 32, 0.95); /* Color similar a --bg-card pero con transparencia */
+  backdrop-filter: blur(10px); /* Efecto de desenfoque trasero */
+  border-bottom: 1px solid rgba(0, 212, 255, 0.3); /* Línea sutil cian */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* LOGO / MARCA */
+.brand-gamer {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 0 0 10px var(--color-glow, #00d4ff);
+  transition: transform 0.3s ease;
+}
+
+.brand-gamer:hover {
+  transform: scale(1.05);
+  color: var(--color-glow, #00d4ff);
+}
+
+/* ENLACES DE NAVEGACIÓN */
+.nav-link-gamer {
+  color: var(--text-secondary, #a0a0a0) !important;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  margin: 0 10px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Efecto Hover y Active para los links */
+.nav-link-gamer:hover, 
+.nav-link-gamer.active {
+  color: #fff !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* Línea animada debajo de los links */
+.nav-link-gamer::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-nintendo, #ff3c28); /* Un toque rojo de energía */
+  transition: width 0.3s ease-in-out;
+  box-shadow: 0 0 5px var(--color-nintendo, #ff3c28);
+}
+
+.nav-link-gamer:hover::after {
+  width: 100%;
+}
+
+/* INPUT DE BÚSQUEDA */
+.search-container input {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-radius: 20px 0 0 20px; /* Redondeado a la izquierda */
+  padding-left: 15px;
+  transition: all 0.3s ease;
+}
+
+.search-container input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.search-container input:focus {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-color: var(--color-xbox, #10cc3e); /* Borde verde al enfocar */
+  box-shadow: 0 0 10px rgba(16, 204, 62, 0.2);
+  outline: none;
+}
+
+/* BOTÓN DE LUPA */
+.search-btn {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: none;
+  border-radius: 0 20px 20px 0; /* Redondeado a la derecha */
+  color: var(--text-secondary, #a0a0a0);
+  transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: var(--color-ps, #006aff); /* Fondo azul al pasar el mouse */
+  color: #fff;
+  box-shadow: 0 0 15px var(--color-ps, #006aff);
+}

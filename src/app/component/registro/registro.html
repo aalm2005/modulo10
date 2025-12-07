@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-header bg-success text-white text-center">
+          <h4>Crear Cuenta</h4>
+        </div>
+        <div class="card-body">
+           <div class="text-center mb-4">
+            <img src="assets/img/link.jpg" alt="Registro Icon" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover;">
+          </div>
+
+          <form #f="ngForm" (ngSubmit)="registro(f)">
+            <div class="mb-3">
+              <label class="form-label">Nombre de Usuario</label>
+              <input type="text" class="form-control" name="nombre" ngModel required placeholder="Tu nombre">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Correo Electrónico</label>
+              <input type="email" class="form-control" name="email" ngModel required placeholder="ejemplo@correo.com">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Contraseña</label>
+              <input type="password" class="form-control" name="password" ngModel required>
+            </div>
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-success btn-block">Registrarse</button>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer text-center">
+          <small>¿Ya tienes cuenta? <a [routerLink]="['/login']">Inicia sesión</a></small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
