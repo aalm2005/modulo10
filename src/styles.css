@@ -35,3 +35,143 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-nintendo);
 }
+
+/* =========================================
+   ESTILOS GAMER PARA LOGIN Y REGISTRO
+   ========================================= */
+
+/* 1. Tarjetas estilo "Panel de Control" */
+.card {
+  background-color: var(--bg-card); /* Fondo oscuro grisáceo */
+  border: 1px solid #333;
+  border-left: 5px solid var(--color-glow); /* Borde neón a la izquierda */
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.1); /* Resplandor suave */
+  color: var(--text-primary);
+  border-radius: 10px;
+}
+
+/* Encabezado de la tarjeta */
+.card-header {
+  background-color: transparent;
+  border-bottom: 1px solid #333;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-glow);
+}
+
+/* 2. Inputs (Cajas de texto) oscuras */
+.form-control {
+  background-color: #0f0f12; /* Más oscuro que la tarjeta */
+  border: 1px solid #333;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.form-control:focus {
+  background-color: #15151a;
+  color: #fff;
+  border-color: var(--color-glow); /* Borde cian al escribir */
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.5); /* Resplandor neón */
+}
+
+/* Etiquetas (Labels) */
+.form-label {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+/* 3. Botones estilo "Press Start" */
+.btn-primary, .btn-success {
+  background: linear-gradient(45deg, var(--color-ps), #0040a0); /* Degradado PlayStation */
+  border: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 0 #003380; /* Efecto 3D botón presionado */
+}
+
+.btn-primary:hover, .btn-success:hover {
+  transform: translateY(2px); /* Se hunde un poco al pasar el mouse */
+  box-shadow: 0 2px 0 #003380;
+  filter: brightness(1.2);
+}
+
+.btn-primary:active, .btn-success:active {
+  transform: translateY(4px); /* Se hunde completo al clickear */
+  box-shadow: none;
+}
+
+/* Botón de Registro (Verde Xbox opcional) */
+app-registro .btn-success {
+  background: linear-gradient(45deg, var(--color-xbox), #0b8a2a);
+  box-shadow: 0 4px 0 #08601d;
+}
+
+app-registro .btn-success:hover {
+  box-shadow: 0 2px 0 #08601d;
+}
+
+/* 4. Enlaces y textos pequeños */
+small a {
+  color: var(--color-nintendo);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+small a:hover {
+  color: #ff756b;
+  text-shadow: 0 0 8px rgba(255, 60, 40, 0.6);
+}
+
+/* Imagen circular con borde brillante */
+.card-body img.rounded-circle {
+  border: 3px solid var(--text-primary);
+  box-shadow: 0 0 15px var(--color-glow);
+  transition: transform 0.3s;
+}
+
+.card-body img.rounded-circle:hover {
+  transform: scale(1.1) rotate(5deg); /* Efecto al pasar el mouse */
+}
+
+/* =========================================
+   3. ARREGLO DEL NAVBAR (Restaurar diseño)
+   ========================================= */
+
+/* Forzamos que el navbar use el color oscuro en lugar del gris de Bootstrap */
+.navbar.bg-body-tertiary {
+  background-color: var(--bg-card) !important;
+  border-bottom: 1px solid #333;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Cambiamos el color de los enlaces del navbar */
+.navbar-nav .nav-link {
+  color: var(--text-secondary) !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+/* Efecto hover estilo neón */
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+  color: var(--color-glow) !important;
+  text-shadow: 0 0 8px var(--color-glow);
+}
+
+/* Botones del Navbar (Login/Registro) */
+.navbar .btn-outline-primary {
+  border-color: var(--color-glow);
+  color: var(--color-glow);
+}
+
+.navbar .btn-outline-primary:hover {
+  background-color: var(--color-glow);
+  color: #000;
+  box-shadow: 0 0 10px var(--color-glow);
+}

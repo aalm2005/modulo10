@@ -25,6 +25,9 @@
         <li class="nav-item">
           <a [routerLink]="['/registro']" class="btn btn-primary">Registro</a>
         </li>
+        <li class="nav-item" *ngIf="authService.isLoggedIn()">
+          <a (click)="cerrarSesion()" class="btn btn-outline-danger">Cerrar Sesión</a>
+        </li>
       </ul>
       </div>
 

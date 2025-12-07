@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../services/auth.service'; // Asegura la ruta correcta
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,17 +18,19 @@ export class LoginComponent {
   login(form: any) {
     if (form.invalid) return;
 
-    // Conectar al servicio SQL
     this.authService.login(form.value).subscribe({
-      next: (respuesta) => {
-        // CONFIRMACIÓN DE ÉXITO 👇
-        alert(`¡Login exitoso! Bienvenido ${respuesta.usuario}`);
+      next: (res: any) => {
+        // 👇 AQUÍ ESTÁ LA LÓGICA DE ROLES
+        if (res.rol === 'admin') {
+            alert('Bienvenido admin');
+        } else {
+            alert(`Bienvenido ${res.usuario}`);
+        }
+        
         this.router.navigate(['/home']);
       },
-      error: (error) => {
-        // CONFIRMACIÓN DE ERROR 👇
-        alert('Error: Correo o contraseña incorrectos');
-        console.error(error);
+      error: (err) => {
+        alert('Error: Correo o contraseña incorrectos.');
       }
     });
   }

@@ -4,7 +4,12 @@ import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 
-// ... decorador igual
+@Component({
+  selector: 'app-registro',
+  standalone: true,
+  imports: [CommonModule, RouterModule, FormsModule],
+  templateUrl: './registro.html'
+})
 export class RegistroComponent {
 
   constructor(private router: Router, private authService: AuthService) {}

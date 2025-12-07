@@ -30,23 +30,36 @@ app.post('/registro', (req, res) => {
     });
 });
 
-// 3. Ruta de Login
+// RUTA DE LOGIN (Modificada)
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
+    
+    // 1. VER QUÉ LLEGA DEL FRONTEND
+    console.log("Intentando loguear con:", email, password);
+
     const sql = 'SELECT * FROM usuarios WHERE email = ? AND password = ?';
+    
     db.query(sql, [email, password], (err, result) => {
-        if (err) return res.status(500).json(err);
+        if (err) return res.status(500).json({ error: err.message });
         
+        // 2. VER QUÉ ENCUENTRA LA BASE DE DATOS
+        console.log("Resultado de la BD:", result);
+
         if (result.length > 0) {
-            // Login exitoso
-            res.json({ success: true, message: 'Bienvenido', usuario: result[0].nombre });
+            res.json({ 
+                success: true, 
+                message: 'Login correcto', 
+                usuario: result[0].nombre, 
+                rol: result[0].rol 
+            });
         } else {
-            // Credenciales incorrectas
-            res.status(401).json({ success: false, message: 'Usuario o contraseña incorrectos' });
+            res.status(401).json({ success: false, message: 'Credenciales incorrectas' });
         }
     });
 });
 
-app.listen(3000, () => {
-    console.log('Servidor corriendo en puerto 3000');
+const PORT = 3000;
+
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
