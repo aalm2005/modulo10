@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000'; // La URL de tu backend
+  private apiUrl = 'http://localhost:3000'; 
 
   constructor(private http: HttpClient) { }
 
@@ -18,20 +18,18 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/login`, credenciales);
   }
 
-  // ============== Lógica de Autenticación de Estado (AÑADIDO) ==============
-
-  // Guarda un indicador de sesión (token) y el rol en el navegador.
+  // ✅ NUEVO: Guarda el token al iniciar sesión (usado en login.ts)
   setLoginStatus(token: string, role: string) {
     localStorage.setItem('user_token', token);
-    localStorage.setItem('user_role', role); // Guardamos el rol para futuras verificaciones
+    localStorage.setItem('user_role', role); 
   }
 
-  // Verifica si existe el indicador de sesión.
+  // ✅ NUEVO: Verifica si hay token (usado en navbar.html)
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('user_token'); // Devuelve true si el token existe
+    return !!localStorage.getItem('user_token'); 
   }
 
-  // Cierra la sesión eliminando los indicadores.
+  // ✅ NUEVO: Elimina el token al cerrar sesión (usado en navbar.ts)
   logout() {
     localStorage.removeItem('user_token');
     localStorage.removeItem('user_role');

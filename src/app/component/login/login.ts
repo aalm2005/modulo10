@@ -20,8 +20,15 @@ export class LoginComponent {
 
     this.authService.login(form.value).subscribe({
       next: (res: any) => {
-        // 👇 AQUÍ ESTÁ LA LÓGICA DE ROLES
-        if (res.rol === 'admin') {
+        // ✅ PASO CLAVE: Guardar el token y el rol en localStorage.
+        // Asumimos que la respuesta del backend (res) contiene 'token' y 'rol'.
+        const token = res.token;
+        const role = res.rol;
+        
+        this.authService.setLoginStatus(token, role); 
+        
+        // 👇 Lógica de Roles (usando la variable 'role')
+        if (role === 'admin') {
             alert('Bienvenido admin');
         } else {
             alert(`Bienvenido ${res.usuario}`);

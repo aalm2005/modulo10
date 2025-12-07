@@ -1,35 +1,40 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../../services/auth.service'; // 👈 Importa el servicio
+import { AuthService } from '../../services/auth.service';
+import { CommonModule } from '@angular/common'; // ✅ PASO 1: Importar CommonModule
 
 @Component({
-  selector: 'app-navbar',
-  standalone: true,
-  imports: [RouterLink],
-  templateUrl: './navbar.html',
-  styleUrl: './navbar.css',
+    selector: 'app-navbar',
+    standalone: true,
+    imports: [
+      RouterLink, 
+      CommonModule // ✅ PASO 2: Añadirlo al array imports para habilitar *ngIf
+  ],
+    templateUrl: './navbar.html',
+    styleUrl: './navbar.css',
 })
 export class Navbar {
-  // 🚨 CAMBIO AQUI: Inyecta AuthService y hazlo público para usarlo en el HTML
-  constructor(private router: Router, public authService: AuthService) {}
+  
+  constructor(
+    private router: Router, 
+    public authService: AuthService
+  ) {}
 
-  buscar(termino: string): void {
-    termino = termino.trim();
+  buscar(termino: string): void {
+    termino = termino.trim();
 
-    if (!termino) {
-      // si viene vacío, solo muestra todos los personajes
-      this.router.navigate(['/personajes']);
-      return;
-    }
+    if (!termino) {
+      this.router.navigate(['/personajes']);
+      return;
+    }
 
-    this.router.navigate(['/personajes'], {
-      queryParams: { q: termino }
-    });
-  }
-  
-  // 🚨 NUEVO METODO: Cierra la sesión
-  cerrarSesion(): void {
-    this.authService.logout();
-    this.router.navigate(['/login']); // Redirigir al login después de cerrar
-  }
+    this.router.navigate(['/personajes'], {
+      queryParams: { q: termino }
+    });
+  }
+  
+  cerrarSesion(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']); 
+  }
 }
